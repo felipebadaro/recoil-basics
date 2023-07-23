@@ -5,10 +5,16 @@ export const counterState = atom({
   default: 0,
 });
 
+export const modifierState = atom({
+  key: "modifierState",
+  default: 1,
+});
+
 export const counterDoubleModifier = selector({
   key: "counterDoubleModifier",
   get: ({ get }) => {
-    const modifier = get(counterState);
-    return modifier * 2;
+    const counter = get(counterState);
+    const modifier = get(modifierState);
+    return counter * modifier;
   },
 });
